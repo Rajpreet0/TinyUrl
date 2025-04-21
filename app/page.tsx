@@ -42,32 +42,36 @@ export default function Home() {
   }
 
   return (
-    <div className="w-full p-2 min-h-screen">
-      <div className="w-full flex items-center mt-4 p-2 justify-center"> 
-        <Image src={Logo} alt="Logo" width={200} height={100}/>
+    <div className="w-full px-4 py-2 min-h-screen flex flex-col items-center">
+      <div className="flex justify-center mt-4">
+        <Image src={Logo} alt="Logo" width={200} height={100} />
       </div>
 
-      <div className="w-full p-2 mt-12 h-[50vh] flex flex-col  items-center justify-center">
-        <div className="flex gap-4 items-center">
-         <Input 
-            type="text" 
+      <div className="flex flex-col items-center justify-center flex-grow mt-12 w-full">
+        <div className="flex flex-col sm:flex-row gap-4 items-center w-full max-w-[500px]">
+          <Input
+            type="text"
             placeholder="URL"
             value={url}
-            onChange={(e) => setUrl(e.target.value)} 
-            className="w-[350px] drop-shadow-2xl h-[40px] bg-white"/>
-         <Button  
-          disabled={loading}
-          onClick={handleShorten}
-          className="cursor-pointer">{loading ? "Loading..." : "Shorten"}</Button>
+            onChange={(e) => setUrl(e.target.value)}
+            className="w-full h-10 bg-white drop-shadow-2xl"
+          />
+          <Button
+            disabled={loading}
+            onClick={handleShorten}
+            className="w-full sm:w-auto h-10"
+          >
+            {loading ? "Loading..." : "Shorten"}
+          </Button>
         </div>
-       
-       {shortUrl &&  (
-          <div className="pt-12 w-[500px]">
+
+        {shortUrl && (
+          <div className="pt-12 w-full max-w-[500px]">
             <TinyUrlCardComponent
-              siteUrl={`https://tiny-url-mu.vercel.app/t/${shortUrl}`}/>
+              siteUrl={`https://tiny-url-mu.vercel.app/t/${shortUrl}`}
+            />
           </div>
         )}
-
       </div>
     </div>
   );
