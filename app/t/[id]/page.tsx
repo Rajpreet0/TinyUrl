@@ -1,17 +1,15 @@
 import { prisma } from "@/db/prisma";
 import { notFound, redirect } from "next/navigation";
 
-type Props = {
-    params: {
-      id: string;
-    };
+type PageProps = {
+    params: Promise<{ id: string }>;
   };
-
-export default async function TinyRedirectPage({ params }: Props) {
-    const shortId = params.id;
+  
+export default async function TinyRedirectPage({ params }: PageProps) {
+    const {id} = await params;
 
     const entry = await prisma.urlMapper.findUnique({
-        where: {tinyUrl: shortId}
+        where: {tinyUrl: id}
     });
 
     if (!entry) {
