@@ -64,7 +64,7 @@ export default function Home() {
        {shortUrl &&  (
           <div className="pt-12 w-[500px]">
             <TinyUrlCardComponent
-              siteUrl={`http://localhost:3000/t/${shortUrl}`}/>
+              siteUrl={`https://tiny-url-mu.vercel.app/t/${shortUrl}`}/>
           </div>
         )}
 
