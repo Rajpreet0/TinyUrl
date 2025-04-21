@@ -3,11 +3,7 @@ import { redirect } from "next/navigation";
 
 
 
-export default async function TinyRedirectPage({
-    params,
-  }: {
-    params: { id: string };
-  }) {
+export default async function TinyRedirectPage({ params }: { params: { id: string } }) {
     const shortId = params.id;
 
     const entry = await prisma.urlMapper.findUnique({
